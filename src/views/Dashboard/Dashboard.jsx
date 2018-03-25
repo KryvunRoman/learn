@@ -9,7 +9,8 @@ import {
   Hotel,
   DirectionsWalk,
   DirectionsRun,
-  DirectionsBike
+  DirectionsBike,
+  DirectionsCar
 } from "material-ui-icons";
 import { withStyles, Grid } from "material-ui";
 
@@ -85,9 +86,11 @@ class Dashboard extends React.Component {
   };
 
   getProgressIcon = (points) => {
-    if(points > 30) {
+    if(points > 80) {
+      return DirectionsCar;
+    } else if(points > 30) {
       return DirectionsBike;
-    } else if(points > 15) {
+    } else if(points > 10) {
       return DirectionsRun;
     } else if(points > 0) {
       return DirectionsWalk;
@@ -113,7 +116,9 @@ class Dashboard extends React.Component {
         `${middelLeavel.done}/${middelLeavel.all}`,
         this.calculateProgress(middelLeavel.done, middelLeavel.all),
       ];
-    })
+    });
+
+    const monthProgress = 16;
 
     return (
       <section>
@@ -130,10 +135,10 @@ class Dashboard extends React.Component {
           </ItemGrid>
           <ItemGrid xs={12} sm={6} md={4}>
             <StatsCard
-              icon={this.getProgressIcon(4)}
+              icon={this.getProgressIcon(monthProgress)}
               iconColor="blue"
               title="Month statistics"
-              description="24"
+              description={monthProgress}
               statIcon={Today}
               statText="Learned in March"
             />
