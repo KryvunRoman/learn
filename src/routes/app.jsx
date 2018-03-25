@@ -1,3 +1,4 @@
+import Achievements from "views/Achievements/Achievements.jsx";
 import DashboardPage from "views/Dashboard/Dashboard.jsx";
 import UserProfile from "views/UserProfile/UserProfile.jsx";
 import TableList from "views/TableList/TableList.jsx";
@@ -8,11 +9,8 @@ import {
   Dashboard,
   Person,
   ContentPaste,
-  LibraryBooks,
-  BubbleChart,
-  LocationOn,
-  Notifications,
-  Group
+  Group,
+  Flag
 } from "material-ui-icons";
 
 const appRoutes = [
@@ -31,18 +29,18 @@ const appRoutes = [
     component: TableList
   },
   {
+    path: "/achievements",
+    sidebarName: "Achievements",
+    navbarName: "Achievements",
+    icon: Flag,
+    component: Achievements
+  },
+  {
     path: "/user",
     sidebarName: "User Profile",
     navbarName: "Profile",
     icon: Person,
     component: UserProfile
-  },
-  {
-    path: "/aboutus",
-    sidebarName: "About Us",
-    navbarName: "About Us",
-    icon: Group,
-    component: NotificationsPage
   },
   { redirect: true, path: "/", to: "/dashboard", navbarName: "Redirect" }
 ];
