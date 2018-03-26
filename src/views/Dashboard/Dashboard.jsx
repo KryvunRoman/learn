@@ -26,6 +26,7 @@ import dashboardStyle from "variables/styles/dashboardStyle";
 class Dashboard extends React.Component {
   state = {
     value: 0,
+    monthProgress: 16,
     userSkill: [{
       name: "HTML", 
       juniorLeavel: { done: 29, all: 36 },
@@ -78,7 +79,15 @@ class Dashboard extends React.Component {
       name: "Bootstrap", 
       juniorLeavel: { done: 6, all: 21 },
       middelLeavel: { done: 9, all: 15 }
-    }]
+    }],
+    menteeList: [
+      ["Jone Doy", "Junior"],
+      ["Bob Del", "Strong Junior"],
+      ["Jone Doy", "Junior"],
+      ["Jone Doy", "Junior"],
+      ["Jone Doy", "Middel"],
+      ["Jone Doy", "Trainee"]
+    ]
   };
 
   calculateProgress = (x, y) => {
@@ -118,8 +127,6 @@ class Dashboard extends React.Component {
       ];
     });
 
-    const monthProgress = 16;
-
     return (
       <section>
         <Grid container>
@@ -135,10 +142,10 @@ class Dashboard extends React.Component {
           </ItemGrid>
           <ItemGrid xs={12} sm={6} md={4}>
             <StatsCard
-              icon={this.getProgressIcon(monthProgress)}
+              icon={this.getProgressIcon(this.state.monthProgress)}
               iconColor="blue"
               title="Month statistics"
-              description={monthProgress}
+              description={this.state.monthProgress}
               statIcon={Today}
               statText="Learned in March"
             />
@@ -148,14 +155,14 @@ class Dashboard extends React.Component {
               icon={Accessibility}
               iconColor="purple"
               title="Mentee count"
-              description="6"
+              description={this.state.menteeList.length}
               statIcon={Update}
               statText="Just Updated"
             />
           </ItemGrid>
         </Grid>
         <Grid container>
-        <ItemGrid xs={12} sm={12} md={8}>
+          <ItemGrid xs={12} sm={12} md={8}>
             <RegularCard
               headerColor="orange"
               cardTitle="My progress"
@@ -178,14 +185,7 @@ class Dashboard extends React.Component {
                 <Table
                   tableHeaderColor="primary"
                   tableHead={["Name", "Leavel"]}
-                  tableData={[
-                    ["Jone Doy", "Junior"],
-                    ["Bob Del", "Strong Junior"],
-                    ["Jone Doy", "Junior"],
-                    ["Jone Doy", "Junior"],
-                    ["Jone Doy", "Middel"],
-                    ["Jone Doy", "Trainee"]
-                  ]}
+                  tableData={this.state.menteeList}
                 />
               }
             />
