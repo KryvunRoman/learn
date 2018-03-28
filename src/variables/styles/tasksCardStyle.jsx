@@ -15,7 +15,8 @@ const tasksCardStyle = theme => ({
     flex: "none",
     ...cardHeader,
     ...defaultFont,
-    background: "linear-gradient(60deg, #ab47bc, #8e24aa)",
+    // background: "linear-gradient(60deg, #ab47bc, #8e24aa)",
+    background: "linear-gradient(60deg, #fb8e07, #e27d00)",
     ...primaryBoxShadow
   },
   cardTitle: {
@@ -47,8 +48,8 @@ const tasksCardStyle = theme => ({
   },
   labelIcon: {
     height: "44px",
-    width: "110px",
-    minWidth: "72px",
+    width: "70px",
+    minWidth: "44px",
     paddingLeft: "14px",
     borderRadius: "3px"
   },
@@ -60,8 +61,8 @@ const tasksCardStyle = theme => ({
     }
   },
   tabs: {
-    width: "110px",
-    minWidth: "70px",
+    width: "10px",
+    minWidth: "7px",
     paddingLeft: "12px"
   },
   cardHeaderContent: {

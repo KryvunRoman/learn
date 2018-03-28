@@ -19,7 +19,8 @@ import tasksCardStyle from "variables/styles/tasksCardStyle";
 
 class TasksCard extends React.Component {
   state = {
-    value: 0
+    value: 0,
+    skillTitles: ["HTML", "CSS", "JS", "HTTP"]
   };
   handleChange = (event, value) => {
     this.setState({ value });
@@ -34,7 +35,7 @@ class TasksCard extends React.Component {
             title: classes.cardTitle,
             content: classes.cardHeaderContent
           }}
-          title="Tasks:"
+          title="FrontEnd: "
           action={
             <Tabs
               classes={{
@@ -45,36 +46,18 @@ class TasksCard extends React.Component {
               indicatorClassName={classes.displayNone}
               textColor="inherit"
             >
-              <Tab
-                classes={{
-                  wrapper: classes.tabWrapper,
-                  rootLabelIcon: classes.labelIcon,
-                  label: classes.label,
-                  rootInheritSelected: classes.rootInheritSelected
-                }}
-                icon={<BugReport className={classes.tabIcon} />}
-                label={"Bugs"}
-              />
-              <Tab
-                classes={{
-                  wrapper: classes.tabWrapper,
-                  rootLabelIcon: classes.labelIcon,
-                  label: classes.label,
-                  rootInheritSelected: classes.rootInheritSelected
-                }}
-                icon={<Code className={classes.tabIcon} />}
-                label={"Website"}
-              />
-              <Tab
-                classes={{
-                  wrapper: classes.tabWrapper,
-                  rootLabelIcon: classes.labelIcon,
-                  label: classes.label,
-                  rootInheritSelected: classes.rootInheritSelected
-                }}
-                icon={<Cloud className={classes.tabIcon} />}
-                label={"Server"}
-              />
+              {this.state.skillTitles.map((skillTitle) =>
+                <Tab
+                  classes={{
+                    wrapper: classes.tabWrapper,
+                    rootLabelIcon: classes.labelIcon,
+                    label: classes.label,
+                    rootInheritSelected: classes.rootInheritSelected
+                  }}
+                  key={skillTitle.toString()}
+                  label={skillTitle}
+                />
+              )}
             </Tabs>
           }
         />
